@@ -1,21 +1,31 @@
 import {ModuleWithProviders} from '@angular/core';
-import {Routes,RouterModule} from '@angular/router' ; 
-import {LoginComponent} from './components/login/login.component'; 
-import {HomeComponent} from './components/home/home.component'; 
+import {Routes,RouterModule} from '@angular/router' ;
+import {LoginComponent} from './components/login/login.component';
+import {HomeComponent} from './components/home/home.component';
+import {DisplayAccountComponent} from './components/display-account/display-account.component';
+import {ModifAccountComponent} from './components/modif-account/modif-account.component';
 
 const appRoutes: Routes = [
-	{ 
-		path : '' , 
+	{
+		path : '' ,
 		redirectTo: '/' ,
-		pathMatch: 'full' 
+		pathMatch: 'full'
 	},
 	{
-		path: 'login' , 
+		path: 'login' ,
 		component: LoginComponent
 	},
 	{
-		path: 'home' , 
+		path: 'home' ,
 		component: HomeComponent
+	},
+	{
+		path: 'displayAccount' ,
+		component: DisplayAccountComponent
+	},
+	{
+		path: 'modifAccount' ,
+		component: ModifAccountComponent
 	},
 
 ];

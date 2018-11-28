@@ -45,12 +45,16 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { DisplayAccountComponent } from './components/display-account/display-account.component';
+import { ModifAccountComponent } from './components/modif-account/modif-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    DisplayAccountComponent,
+    ModifAccountComponent
   ],
   imports: [
 	BrowserModule,
