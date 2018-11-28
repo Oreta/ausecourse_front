@@ -47,6 +47,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { DisplayAccountComponent } from './components/display-account/display-account.component';
 import { ModifAccountComponent } from './components/modif-account/modif-account.component';
+import { ListeCourseComponent } from './components/liste-course/liste-course.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ModifAccountComponent } from './components/modif-account/modif-account.
     LoginComponent,
     HomeComponent,
     DisplayAccountComponent,
-    ModifAccountComponent
+    ModifAccountComponent,
+    ListeCourseComponent
   ],
   imports: [
 	BrowserModule,
