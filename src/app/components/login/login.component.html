@@ -1,0 +1,43 @@
+<div class="container border" style="margin-top: 40px; width: 30%;" [hidden]="loggedIn">
+  <mat-tab-group>
+    <mat-tab label="Sign in">
+      <h2>Sign in</h2>
+      <div *ngIf="loginError" style="color:red;"> 
+        Incorrect username or password.
+      </div>
+      <form (ngSubmit)="onLogin()">
+        <mat-form-field style="width: 100%">
+          <input matInput id="username" name="username" [(ngModel)]="credential.username" required="required" autofocus="autofocus" placeholder="Username">
+        </mat-form-field>     
+        <mat-form-field style="width: 100%">
+            <input matInput type="password" id="password" name="password" [(ngModel)]="credential.password" required="required" autofocus="autofocus" placeholder="Password">
+        </mat-form-field>   
+
+        <button mat-button class="button" type="submit">Submit</button>
+      </form>      
+    </mat-tab>
+    <mat-tab label="Register">
+      <h2>Register</h2>
+      <div class="alert alert-info" *ngIf="emailSent">An email has been sent to the email address you just registered. Please validate your email address and update your password info.</div>
+      <form (ngSubmit)="onNewAccount()">
+        <mat-form-field style="width: 100%">
+          <input matInput type="text" id="newUsername" name="username" [(ngModel)]="username" required="required" placeholder="username">
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
+          <span *ngIf="emailExists" style="color:red;">Email already exists. Choose a different one.</span>
+          <input matInput type="email" id="email" name="email" [(ngModel)]="email" required="required" placeholder="email">
+        </mat-form-field>  
+        <mat-form-field style="width: 100%">
+          <input matInput type="password" id="password" name="password" [(ngModel)]="password" required="required" placeholder="password">  
+        </mat-form-field>      
+        <mat-form-field style="width: 100%">
+          <span *ngIf="passwordNotMaching" style="color:red;">the passwords don't match !</span>
+          <input matInput type="password" id="password-confirmation" name="password-confirmation" [(ngModel)]="passwordConfirmation" required="required" placeholder="password-confirmation"> 
+        </mat-form-field>
+                
+        <button mat-button type="submit" class="button">Submit</button>
+      </form>    
+    </mat-tab>
+  </mat-tab-group>
+
+</div> 
