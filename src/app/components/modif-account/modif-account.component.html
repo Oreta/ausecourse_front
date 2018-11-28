@@ -1,29 +1,4 @@
 <div>
-  <!-- <h2>Register</h2>
-  <div class="alert alert-info" *ngIf="emailSent">An email has been sent to the email address you just registered. Please validate your email address and update your password info.</div>
-  <form (ngSubmit)="onUpdateAccount()">
-
-    <div class="form-group">
-     <label for="name">Username</label>
-     <input type="text" class="form-control" id="newUsername"
-            required
-            [(ngModel)]="this.user.username" name="username" required="required">
-    </div>
-
-    <div class="form-group">
-     <label for="name">E-mail</label>
-     <input type="text" class="form-control" id="newEmail"
-            required
-            [(ngModel)]="user.email" name="username" required="required">
-    </div>
-
-    <div class="form-group">
-     <label for="name">Name</label>
-     <input type="text" class="form-control" id="newUsername"
-            required
-            [(ngModel)]="user.password" name="username" required="required">
-    </div>
-  </form> -->
   <h2>Register</h2>
   <div class="alert alert-info" *ngIf="Update">Your informations are update</div>
   <form (ngSubmit)="onUpdateAccount()" *ngIf="user">
