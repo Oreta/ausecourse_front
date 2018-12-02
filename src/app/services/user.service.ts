@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 import {Http, Headers} from '@angular/http'; 
 import {Observable} from 'rxjs/Observable' ; 
 import {Router} from '@angular/router' ; 
 import {User} from '../models/user' ; 
+import {AppConst} from '../constants/app-const' ;
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +15,8 @@ export class UserService {
 
 	private serverPath: string = "http://127.0.0.1:8080" ; 
 
-	constructor(private http: Http, private router:Router) { } 
+	constructor(private http: Http, private router:Router,
+		private httpClient : HttpClient) { } 
 
 	sendCredential(username: string , password: string){
 		let url = this.serverPath+"/token"; 
@@ -103,6 +108,12 @@ export class UserService {
 		});
 
 		return this.http.get(url, {headers : tokenHeader});
+	}
+
+	createShoppingList(user : User) {
+		let url = AppConst.serverPath+"user/createShoppingList";
+  		return this.httpClient.post(url, user.id, {responseType:'text'});		
+
 	}
 
 }

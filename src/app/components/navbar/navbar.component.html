@@ -1,0 +1,16 @@
+<mat-toolbar style="background: #284267; color: white; margin-bottom: 5%;">
+	<div> 
+		AuseCourse
+	</div>
+
+	<div style="margin-left: 60%;" [hidden]="!loggedIn">
+		<button mat-button [matMenuTriggerFor]="menu"> Bonjour {{user.username}} </button>
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item routerLink="/displayAccount">Afficher_Compte</button>
+			<button mat-menu-item routerLink="/modifAccount">Modifier_Compte</button>
+		</mat-menu>
+		<button mat-button routerLink="/catalogue">Passer une commande</button>
+		<button mat-button (click)="logout()" value="Logout" class="button">Log out</button>
+	</div>
+
+</mat-toolbar>

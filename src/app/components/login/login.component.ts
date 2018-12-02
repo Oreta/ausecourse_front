@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
 			console.log("login works ! " + res.json().token);
 			//location.reload();
 
-			this.router.navigate(['/home']);
+			window.location.href = "http://localhost:4200/home" ;
 		},
 		error => {
 			this.loggedIn = false;

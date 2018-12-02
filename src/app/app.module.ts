@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'angular2-cookie/core';
 
 
 import { FormsModule } from '@angular/forms';
@@ -47,6 +49,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { DisplayAccountComponent } from './components/display-account/display-account.component';
 import { ModifAccountComponent } from './components/modif-account/modif-account.component';
+import { CatalogueComponent } from './components/catalogue/catalogue.component';
+import {NavbarComponent} from './components/navbar/navbar.component' ;
 
 @NgModule({
   declarations: [
@@ -54,7 +58,9 @@ import { ModifAccountComponent } from './components/modif-account/modif-account.
     LoginComponent,
     HomeComponent,
     DisplayAccountComponent,
-    ModifAccountComponent
+    ModifAccountComponent,
+    CatalogueComponent,
+    NavbarComponent
   ],
   imports: [
 	BrowserModule,
@@ -63,7 +69,7 @@ import { ModifAccountComponent } from './components/modif-account/modif-account.
 	FormsModule,
 	HttpModule,
 	routing,
-	
+	HttpClientModule,
 	MatAutocompleteModule,
 	MatButtonModule,
 	MatButtonToggleModule,
@@ -96,7 +102,7 @@ import { ModifAccountComponent } from './components/modif-account/modif-account.
 	MatTooltipModule,
 	MatStepperModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

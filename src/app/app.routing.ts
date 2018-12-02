@@ -4,6 +4,7 @@ import {LoginComponent} from './components/login/login.component';
 import {HomeComponent} from './components/home/home.component';
 import {DisplayAccountComponent} from './components/display-account/display-account.component';
 import {ModifAccountComponent} from './components/modif-account/modif-account.component';
+import {CatalogueComponent} from './components/catalogue/catalogue.component' ; 
 
 const appRoutes: Routes = [
 	{
@@ -26,6 +27,10 @@ const appRoutes: Routes = [
 	{
 		path: 'modifAccount' ,
 		component: ModifAccountComponent
+	},
+	{
+		path: 'catalogue' ,
+		component: CatalogueComponent
 	},
 
 ];

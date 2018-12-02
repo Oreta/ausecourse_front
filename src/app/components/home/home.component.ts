@@ -4,6 +4,7 @@ import {User} from '../../models/user';
 import {Router, NavigationExtras} from '@angular/router'; 
 import {Params, ActivatedRoute} from '@angular/router';
 import {Http} from '@angular/http';
+import {CookieService} from 'angular2-cookie/core';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private userService: UserService,
+    private cookieService : CookieService, 
   	private router:Router,
   	private http:Http,
     private route:ActivatedRoute) { }
@@ -46,23 +48,19 @@ export class HomeComponent implements OnInit {
     );  	
   }
 
-  logout() {
-
-  	this.userService.logout().subscribe(
-		res => {
-			console.log(res)
-			console.log("yaaaayy logout");
-			//location.reload();		
-		}, 
-		error => {
-			console.log("pffff ");
-			console.log(error);
-			//location.reload();
-		}
-
-  	);
-  	this.router.navigate(['/']);
+  createShoppingList(user: User) {
+    this.userService.createShoppingList(user).subscribe(
+      (res : string) => {
+        this.cookieService.put("listId", res) ;
+      },
+      error => {
+        console.log(error) ;
+      }  
+    );
   }
+
+
+
 
 }
 
