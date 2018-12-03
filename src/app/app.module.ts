@@ -2,8 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'angular2-cookie/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+
 
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -65,8 +64,6 @@ import {NavbarComponent} from './components/navbar/navbar.component' ;
 	BrowserModule,
 	FormsModule,
 	HttpModule,
-	BrowserAnimationsModule,
-	NoopAnimationsModule,
 	routing,
 	HttpClientModule,
 	MatAutocompleteModule,
