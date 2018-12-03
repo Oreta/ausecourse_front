@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "file:node_modules/@angular/animations",
+    "@angular/animations": "^6.1.10",
     "@angular/cdk": "^7.0.4",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
