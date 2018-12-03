@@ -1,9 +1,3 @@
-# Problems
-
-les nodes modules ne sont pas sur le git dans un soucis d'espace. Il est possible de les obtenirs en générant un autre projet et en récuperant le dossier node module contenu dedans.
-Il peut cependant subsister un soucis avec le module @angular qui est parfois incomplet.
-Cette commande régle un des problèmes npm install rxjs-compat --save
-
 # AusecourseFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
