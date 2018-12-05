@@ -79,28 +79,28 @@ export class ModifAccountComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.userService.checkSession().subscribe(
-    //   res => {
-    //     this.loggedIn=true;
-    //     console.log("it works !");
-    //   },
-    //   error => {
-    //     this.loggedIn=false;
-    //     console.log("it's not working !" + localStorage.getItem('xAuthToken'));
-    //   }
-    // );
+    this.userService.checkSession().subscribe(
+      res => {
+        this.loggedIn=true;
+        console.log("it works !");
+      },
+      error => {
+        this.loggedIn=false;
+        console.log("it's not working !" + localStorage.getItem('xAuthToken'));
+      }
+    );
 
     this.userService.getCurrentUser().subscribe(
       res => {
         this.user = res.json();
-        this.user.username = "test";
-        this.user.password = "test";
-        this.user.email = "test@test.fr";
-        this.user.id = 32;
-        this.user.city = "Lille";
-        this.user.numeroRoad = 32;
-        this.user.Road = "Alfred de Vigny";
-        this.user.tel = 33123456789;
+        // this.user.username = "test";
+        // this.user.password = "test";
+        // this.user.email = "test@test.fr";
+        // this.user.id = 32;
+        // this.user.city = "Lille";
+        // this.user.numeroRoad = 32;
+        // this.user.Road = "Alfred de Vigny";
+        // this.user.tel = 33123456789;
         console.log(res.json());
 
       },

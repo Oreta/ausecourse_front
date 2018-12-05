@@ -50,7 +50,8 @@ import { HomeComponent } from './components/home/home.component';
 import { DisplayAccountComponent } from './components/display-account/display-account.component';
 import { ModifAccountComponent } from './components/modif-account/modif-account.component';
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
-import {NavbarComponent} from './components/navbar/navbar.component' ;
+import {NavbarComponent} from './components/navbar/navbar.component';
+import { ListeCourseComponent } from './components/liste-course/liste-course.component' ;
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {NavbarComponent} from './components/navbar/navbar.component' ;
     DisplayAccountComponent,
     ModifAccountComponent,
     CatalogueComponent,
-    NavbarComponent
+    NavbarComponent,
+    ListeCourseComponent
   ],
   imports: [
 	BrowserModule,
