@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductService} from '../../services/product.service' ;
+
+import {Params, ActivatedRoute, Router} from '@angular/router';
+import {Http} from '@angular/http';
+import {Product} from '../../models/product' ;
+import {MatTableModule} from '@angular/material/table';
 
 
 @Component({
@@ -8,23 +14,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListeCourseComponent implements OnInit {
 
-  constructor() { }
+  private commande: Product[] = [
+    {id:"5" ,nom:"test",quantity:2,prix:32}
+  ];
 
-  displayedColumns: string[] = ['name', 'quantity'];
-  dataSource = ELEMENT_DATA;
+  constructor(
+	  	private productService: ProductService,
+	  	private router:Router,
+	    private http:Http,
+	    private route:ActivatedRoute) { }
+
+  onUpdateCourse(){
+    
+  }
+
 
   ngOnInit() {
+    this.productService.getProductList().subscribe(
+      res => {
+        console.log(res);
+      },
+      error => {
+        // console.log(error.text());
+        // let errorMessage = error.text();
+      }
+    );
   }
 
 }
-
-export interface Commande {
-  name: string;
-  quantity: number;
-}
-
-const ELEMENT_DATA: Commande[] = [
-  {name: 'prem', quantity: 2},
-  {name: 'test', quantity: 2},
-  {name: 'light', quantity: 2},
-];

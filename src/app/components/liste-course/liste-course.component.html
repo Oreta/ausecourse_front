@@ -1,21 +1,32 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<form class="uk-form" name="bookForm">
+  <input ng-model="product.nom" name="nom" placeholder="nom du produit">
+  <input ng-model="product.quantity" placeholder="quantité">
+  <p ng-model="product">{{product._id}}</p>
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+  <hr>
+  <a href="# " ng-click="addProduct(product)">Ajouter</a>
+  <hr>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Product name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
+</form>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef> Quantity </th>
-    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
-  </ng-container>
+<div class="uk-panel">
 
+  <h3 class="uk-panel-title">Liste de courses</h3>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+  <table class="uk-table uk-table-hover">
+    <thead>
+    <tr>
+      <th>Product name</th>
+      <th>Quantity</th>
+    </tr>
+    </thead>
+
+    <tbody ng-repeat="product in commande">
+    <tr>
+      <td>{{product.nom}}</td>
+      <td>{{product.quantity}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
