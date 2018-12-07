@@ -1,13 +1,17 @@
-<form class="uk-form" name="bookForm">
+<div>
+<h3 class="uk-panel-title">Ajout de courses</h3>
+<form class="uk-form" name="bookForm" (ngSubmit)="onAddProduct(product)">
+  <input ng-model="product.id" placeholder="id">
   <input ng-model="product.nom" name="nom" placeholder="nom du produit">
   <input ng-model="product.quantity" placeholder="quantité">
-  <p ng-model="product">{{product._id}}</p>
+  <input ng-model="product.prix" placeholder="prix">
 
   <hr>
-  <a href="# " ng-click="addProduct(product)">Ajouter</a>
+  <button type="submit" value="Submit">Ajout de produit</button>
   <hr>
 
 </form>
+</div>
 
 <div class="uk-panel">
 
@@ -21,7 +25,7 @@
     </tr>
     </thead>
 
-    <tbody ng-repeat="product in commande">
+    <tbody *ngFor="let product of commande">
     <tr>
       <td>{{product.nom}}</td>
       <td>{{product.quantity}}</td>
