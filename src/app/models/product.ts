@@ -1,6 +1,7 @@
 export class Product {
-	public id : string ;
-	public nom : string ;
-	public quantity : number ;
-	public prix: number;
+	public name : string ;
+	public brand : string ; 
+	public price: number;
+	public qty : number ;
+	public listId : string ;
 }

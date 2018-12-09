@@ -49,9 +49,11 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { DisplayAccountComponent } from './components/display-account/display-account.component';
 import { ModifAccountComponent } from './components/modif-account/modif-account.component';
-import { CatalogueComponent } from './components/catalogue/catalogue.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
-import { ListeCourseComponent } from './components/liste-course/liste-course.component' ;
+import { ListeCourseComponent } from './components/liste-course/liste-course.component';
+import { LivreursComponent } from './components/livreurs/livreurs.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { OrdersComponent } from './components/orders/orders.component' ;
 
 @NgModule({
   declarations: [
@@ -60,9 +62,11 @@ import { ListeCourseComponent } from './components/liste-course/liste-course.com
     HomeComponent,
     DisplayAccountComponent,
     ModifAccountComponent,
-    CatalogueComponent,
     NavbarComponent,
-    ListeCourseComponent
+    ListeCourseComponent,
+    LivreursComponent,
+    PaymentComponent,
+    OrdersComponent
   ],
   imports: [
 	BrowserModule,

@@ -4,8 +4,10 @@ import {LoginComponent} from './components/login/login.component';
 import {HomeComponent} from './components/home/home.component';
 import {DisplayAccountComponent} from './components/display-account/display-account.component';
 import {ModifAccountComponent} from './components/modif-account/modif-account.component';
-import {CatalogueComponent} from './components/catalogue/catalogue.component' ;
 import {ListeCourseComponent} from './components/liste-course/liste-course.component' ;
+import {LivreursComponent} from './components/livreurs/livreurs.component' ; 
+import {PaymentComponent} from './components/payment/payment.component' ;
+import {OrdersComponent} from './components/orders/orders.component' ;
 
 const appRoutes: Routes = [
 	{
@@ -30,13 +32,22 @@ const appRoutes: Routes = [
 		component: ModifAccountComponent
 	},
 	{
-		path: 'catalogue' ,
-		component: CatalogueComponent
-	},
-	{
 		path: 'course' ,
 		component: ListeCourseComponent
 	},
+	{
+		path: 'livreurs' ,
+		component: LivreursComponent
+	},
+	{
+		path: 'payment' ,
+		component: PaymentComponent
+	},
+	{
+		path: 'orders' ,
+		component: OrdersComponent
+	},
+
 
 ];
 

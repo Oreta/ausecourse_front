@@ -116,4 +116,14 @@ export class UserService {
 
 	}
 
+	getAvailableLivreurs(user: User){
+		let url = AppConst.serverPath+"user/getAvailableLivreurs";
+		return this.httpClient.post(url,user) ;
+	}
+
+	getAllOrders(user:User){
+		let url = AppConst.serverPath+"user/getAllOrders";
+		return this.httpClient.post(url,user);
+	}
+
 }

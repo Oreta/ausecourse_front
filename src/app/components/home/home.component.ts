@@ -27,20 +27,15 @@ export class HomeComponent implements OnInit {
     this.userService.checkSession().subscribe(
       res => {
         this.loggedIn=true;
-        console.log("it works !");
       },
       error => {
         this.loggedIn=false;
-        console.log("it's not working !" + localStorage.getItem('xAuthToken'));
       }
     );
 
     this.userService.getCurrentUser().subscribe(
       res => {
         this.user = res.json(); 
-        console.log(this.user.username + " " + this.user.password + "  " + this.user.email + " " + this.user.id);
-        console.log(res.json());
-
       },
       error => {
         this.loggedIn=false;

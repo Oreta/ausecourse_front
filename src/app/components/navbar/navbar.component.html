@@ -3,14 +3,14 @@
 		AuseCourse
 	</div>
 
-	<div style="margin-left: 60%;" [hidden]="!loggedIn">
+	<div style="margin-left: 50%;" [hidden]="!loggedIn">
 		<button mat-button [matMenuTriggerFor]="menu"> Bonjour {{user.username}} </button>
 		<mat-menu #menu="matMenu">
 			<button mat-menu-item routerLink="/displayAccount">Afficher_Compte</button>
 			<button mat-menu-item routerLink="/modifAccount">Modifier_Compte</button>
 		</mat-menu>
-		<button mat-button routerLink="/catalogue">Passer une commande</button>
-		<button mat-button routerLink="/course">Liste de course</button>
+		<button mat-button routerLink="/orders">mes commandes</button>
+		<button mat-button routerLink="/course">passer une commande</button>
 		<button mat-button (click)="logout()" value="Logout" class="button">Log out</button>
 	</div>
 

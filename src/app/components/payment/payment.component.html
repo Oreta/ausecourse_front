@@ -1,0 +1,13 @@
+<div class="container border" style="margin-top: 40px; width: 50%;" [hidden]="clientPaid">
+	<h3> Page de paiement </h3> <br> <br>
+	<button mat-button (click)="onPaid()">Payez en cliquant ici</button>
+</div>
+
+<div class="container border" style="margin-top: 40px; width: 50%;" [hidden]="!clientPaid">
+	<h3> Vous avez paye, merci d'avoir utilise AuseCourse ! </h3>
+	<br> <br> 
+
+	Verifiez l'etat de vos commandes ici : <br>
+	<button mat-button routerLink="/orders">Payez en cliquant ici</button>
+</div>
+
