@@ -12,7 +12,7 @@ import {User} from '../../models/user';
 })
 export class NavbarComponent implements OnInit {
 
-	private loggedIn : boolean = false ; 
+	private loggedIn : boolean  ; 
 	private user : User ; 
  
   constructor(private userService: UserService, 
@@ -25,8 +25,7 @@ export class NavbarComponent implements OnInit {
 			this.userService.getCurrentUser().subscribe(
 			  res => {
 			    this.user = res.json(); 
-			    console.log(this.user.username + " " + this.user.password + "  " + this.user.email + " " + this.user.id);
-			    console.log(res.json());
+			    
 
 			  },
 			  error => {
@@ -44,14 +43,13 @@ export class NavbarComponent implements OnInit {
 
   	this.userService.logout().subscribe(
 		res => {
-			console.log(res)
-			console.log("yaaaayy logout");
+
 			//location.reload();
 			this.loggedIn = false ;	
 			this.router.navigate(['/login']);	
 		}, 
 		error => {
-			console.log("pffff ");
+
 			console.log(error);
 			//location.reload();
 		}

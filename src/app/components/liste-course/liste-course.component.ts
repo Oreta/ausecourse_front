@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../services/product.service' ;
+import {UserService} from '../../services/user.service' ;
 import {CookieService} from 'angular2-cookie/core';
 import {Product} from '../../models/product' ;
-
+import {User} from '../../models/user'; 
+import {ListeCourse} from "../../models/ListeCourse" ;
 
 @Component({
   selector: 'app-liste-course',
@@ -11,18 +13,30 @@ import {Product} from '../../models/product' ;
 })
 export class ListeCourseComponent implements OnInit {
 
-  public productsList: Product[] = [];
+  private productsList: Product[] = [];
+  private listeCourse : ListeCourse = new ListeCourse(); 
+  private listaux = {} as any ; 
+  private name : string ; 
+  private qty : number ;
   private product:Product;
   private productAdded : boolean ; 
+  private currentUser : User ;
+  private listeCourseSaved : boolean ; 
 
   constructor(
 	  	private productService: ProductService,
-      private cookieService : CookieService) { }
+      private cookieService : CookieService,
+      private userService : UserService) { 
+    
+  }
 
   getProductList(){
     this.productService.getProductList().subscribe(
-      (res:Product[]) => {
-        this.productsList = res ; 
+      (res:ListeCourse) => {
+        this.listeCourse = res ; 
+        
+        console.log("liste courses : " + this.listeCourse.liste );
+         
       },
       error => {
         console.log(error);      
@@ -31,21 +45,44 @@ export class ListeCourseComponent implements OnInit {
   }
 
   onAddProduct(){
-    this.product.listId = this.cookieService.get("listId");
-    this.productService.addToShoppingList(this.product).subscribe(
-      res => {
+
+    this.productService.addProduct(this.name,this.qty).subscribe(
+      (res:string) => {
         this.productAdded = true ; 
+        this.listaux[this.name] = this.qty;
         this.getProductList();
       },
       error => {
-        this.productAdded = false ;
+        console.log(error);      
       }
     );
   }
 
   ngOnInit() {
 
-    //this.getProductList();
+    this.userService.getCurrentUser().subscribe(
+      res => {
+        this.currentUser = res.json() ;
+        this.listeCourse.mail = this.currentUser.email ; 
+        this.productService.save(this.listeCourse).subscribe(
+          (res:string) => {
+            this.listeCourseSaved = true ;
+            this.cookieService.put("listId",res);
+            //this.getProductList();
+          },
+          error => {
+            console.log(error); 
+            this.productAdded = false ;
+          }
+        );
+
+      },
+      error => {
+        console.log(error);
+      }      
+    );
+
+
     
   }
 

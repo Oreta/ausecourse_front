@@ -7,4 +7,6 @@ export class User {
 	public numeroRoad:number;
 	public Road:string;
 	public tel:number;
+	public client : boolean ; 
+	public deliverer : boolean ;
 }

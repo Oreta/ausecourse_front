@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
 	private emailNotExists:boolean = false ;
 	private forgetPasswordEmailSent:boolean ;
 	private recoverEmail:string ;
+	private mode : string ; 
 
 
  	constructor(
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit {
 		if(this.password != this.passwordConfirmation)
 			this.passwordNotMaching = true ;
 
-		this.userService.newUser(this.username, this.email, this.password).subscribe(
+		this.userService.newUser(this.username, this.email, this.password, this.mode).subscribe(
 			res => {
 				console.log(res);
 				this.emailSent = true;

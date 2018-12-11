@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service' ;
 import {User} from '../../models/user' ; 
+import {CookieService} from 'angular2-cookie/core';
+
 
 @Component({
   selector: 'app-livreurs',
@@ -12,7 +14,8 @@ export class LivreursComponent implements OnInit {
 	private livreurs : User[] ; 
 	private currentUser : User ; 
 
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService,
+    private cookieService : CookieService) { }
 
   // en parametre le user qui est le client
   // la liste qui est retournee, contient les users qui sont des livreurs au fait
@@ -29,6 +32,7 @@ export class LivreursComponent implements OnInit {
 
   onNotifyLivreur(livreur: User) {
   	//notify livreur 
+    this.userService.notifyLivreur(livreur.id,this.currentUser.id)//this.cookieService.get("listId"));
   	window.location.href = "http://localhost:4200/payment" ;
   }
 
@@ -40,7 +44,7 @@ export class LivreursComponent implements OnInit {
   	this.livreurTest.password = "123" ;
 
   	//utilise l'ancien module http ! res.json() est normal 
-  	/*
+  	
   	this.userService.getCurrentUser().subscribe(
       res => {
         this.currentUser = res.json(); 
@@ -50,7 +54,7 @@ export class LivreursComponent implements OnInit {
         console.log(error);
       }     
   	);  	
-  	*/
+  	
 
   }
 

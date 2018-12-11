@@ -53,7 +53,8 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import { ListeCourseComponent } from './components/liste-course/liste-course.component';
 import { LivreursComponent } from './components/livreurs/livreurs.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { OrdersComponent } from './components/orders/orders.component' ;
+import { OrdersComponent } from './components/orders/orders.component';
+import { LivreurDashboardComponent } from './components/livreur-dashboard/livreur-dashboard.component' ;
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { OrdersComponent } from './components/orders/orders.component' ;
     ListeCourseComponent,
     LivreursComponent,
     PaymentComponent,
-    OrdersComponent
+    OrdersComponent,
+    LivreurDashboardComponent
   ],
   imports: [
 	BrowserModule,

@@ -1,49 +1,25 @@
-<!-- 
-remplacer le form ci dessus par celui la quand la partie back
-est prete : 
 
-    <form (ngSubmit)="onAddProduct()">
 
-      <mat-form-field>
-        <input matInput [(ngModel)]="product.name" placeholder="produit">
-      </mat-form-field> 
-      <br>
-      <mat-form-field>
-        <input matInput [(ngModel)]="product.brand" placeholder="marque">
-      </mat-form-field> 
-      <br>
-      <mat-form-field>
-        <input matInput [(ngModel)]="product.qty" placeholder="quantité">
-      </mat-form-field> 
-      <br>
-      <mat-form-field>
-        <input matInput [(ngModel)]="product.price" placeholder="prix">
-      </mat-form-field> 
-      <br>
-      <button type="submit" value="Submit">Ajouter</button>
-    </form>    
--->
 <div class="container border" style="margin-top: 40px; ">
   <mat-grid-list cols="2" rowHeight="3:2">
     <mat-grid-tile>
+
       <form (ngSubmit)="onAddProduct()">
         <h3>creez votre liste ici !</h3>
         <br>
         <mat-form-field>
-          <input matInput placeholder="produit">
+          <input matInput [(ngModel)]="name" name="name" placeholder="produit">
         </mat-form-field> 
         <br>
         <mat-form-field>
-          <input matInput  placeholder="marque">
-        </mat-form-field> 
-        <br>
-        <mat-form-field>
-          <input matInput placeholder="quantité">
+          <input matInput [(ngModel)]="qty" name="qty" placeholder="quantité">
         </mat-form-field> 
         <br>
         <button mat-button type="submit" value="Submit">Ajouter</button>
         <button mat-button routerLink="/livreurs">checkout</button>
+
       </form>    
+
     </mat-grid-tile>
 
     <mat-grid-tile>
@@ -56,18 +32,14 @@ est prete :
             <thead>
             <tr>
               <th>Produit</th>
-              <th>Marque</th>
               <th>Quantite</th>   
-              <th>prix</th>   
             </tr>
             </thead>
 
-            <tbody *ngFor="let product of productsList">
+            <tbody *ngFor="let item of listaux | keyvalue">
             <tr>
-              <td>{{product.name}}</td>
-              <td>{{product.brand}}</td>
-              <td>{{product.qty}}</td>
-              <td>{{product.price}}</td>
+              <td>{{item.key}}</td>
+              <td>{{item.value}}</td>
             </tr>
             </tbody>
           </table>
@@ -76,13 +48,10 @@ est prete :
      
     </mat-grid-tile>
 
-       
-
   </mat-grid-list>
 
-
-
-
 </div>
+
+
 
 

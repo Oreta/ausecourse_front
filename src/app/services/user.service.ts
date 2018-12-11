@@ -52,12 +52,14 @@ export class UserService {
 
 
 
-	newUser(username: string, email:string, password: string) {
+	newUser(username: string, email:string, password: string, mode :string) {
+		console.log("mode  " + mode);
 		let url = this.serverPath+'/user/newUser';
 		let userInfo = {
 			"username" : username,
 			"email" : email,
-			"password" : password
+			"password" : password,
+			"mode" : mode 
 		}
 		let tokenHeader = new Headers({
 			'Content-Type' : 'application/json',
@@ -117,8 +119,8 @@ export class UserService {
 	}
 
 	getAvailableLivreurs(user: User){
-		let url = AppConst.serverPath+"user/getAvailableLivreurs";
-		return this.httpClient.post(url,user) ;
+		let url = AppConst.serverPath+"user/getLivreurs";
+		return this.httpClient.get(url) ;
 	}
 
 	getAllOrders(user:User){
@@ -126,4 +128,31 @@ export class UserService {
 		return this.httpClient.post(url,user);
 	}
 
+	notifyLivreur(livreurId : string , listeCourseId : string){
+		let url = this.serverPath+'/user/notifyLivreur';
+		let userInfo = {
+			"livreurId" : livreurId,
+			"listeCourseId" : listeCourseId
+		}
+		let tokenHeader = new Headers({
+			'Content-Type' : 'application/json',
+			'x-auth-token' : localStorage.getItem('xAuthToken')
+		});
+
+		return this.http.post(url, JSON.stringify(userInfo), {headers : tokenHeader});
+
+
+	}
+
+	getNotifications(id : string){
+		let url = this.serverPath+'/user/getNotification';
+
+		let tokenHeader = new Headers({
+			'Content-Type' : 'application/json',
+			'x-auth-token' : localStorage.getItem('xAuthToken')
+		});
+
+		return this.http.post(url, id, {headers : tokenHeader});
+
+	}
 }
