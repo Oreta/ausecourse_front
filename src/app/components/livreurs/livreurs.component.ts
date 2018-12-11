@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service' ;
+import {ProductService} from '../../services/product.service' ;
 import {User} from '../../models/user' ; 
 import {CookieService} from 'angular2-cookie/core';
-
+import {Order} from '../../models/order' ; 
+import {ListeCourse} from '../../models/ListeCourse' ; 
+import {OrderService} from '../../services/order.service' ;
 
 @Component({
   selector: 'app-livreurs',
@@ -13,8 +16,11 @@ export class LivreursComponent implements OnInit {
 	private livreurTest = new User(); 
 	private livreurs : User[] ; 
 	private currentUser : User ; 
+  private listCourse : ListeCourse ; 
 
-  constructor(private userService : UserService,
+  constructor(private userService : UserService ,
+    private orderService : OrderService , 
+    private productService : ProductService ,
     private cookieService : CookieService) { }
 
   // en parametre le user qui est le client
@@ -32,8 +38,19 @@ export class LivreursComponent implements OnInit {
 
   onNotifyLivreur(livreur: User) {
   	//notify livreur 
-    this.userService.notifyLivreur(livreur.id,this.currentUser.id)//this.cookieService.get("listId"));
-  	window.location.href = "http://localhost:4200/payment" ;
+    let order = new Order(); 
+    order.clientID = this.currentUser.id ; 
+    order.livreurId = livreur.id;  
+    order.listeCourse = this.listCourse ;
+    this.userService.notifyLivreur(order).subscribe(
+      res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);      
+      }      
+    );//this.cookieService.get("listId"));
+  	window.location.href = "http://localhost:4200/orders" ;
   }
 
 
@@ -48,6 +65,14 @@ export class LivreursComponent implements OnInit {
   	this.userService.getCurrentUser().subscribe(
       res => {
         this.currentUser = res.json(); 
+        this.productService.getProductList().subscribe(
+          (res:ListeCourse) => {
+            this.listCourse = res ; 
+          },
+          error => {
+            console.log(error);      
+          }                
+        );
         this.getAvailableLivreurs(this.currentUser);
       },
       error => {

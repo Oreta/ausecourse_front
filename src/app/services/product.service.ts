@@ -17,8 +17,8 @@ export class ProductService {
 
 	getProductList() {
 		let url = AppConst.serverPath+"ListeCourse/getById";
-		let params = new HttpParams(); 
-		return this.http.post(url,this.cookieService.get("listId"),{params}) ;
+		//let params = new HttpParams(); 
+		return this.http.post(url,this.cookieService.get("listId")) ;
 	}
 
 	addToShoppingList(product: Product) {

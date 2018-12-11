@@ -34,6 +34,12 @@
           <span *ngIf="passwordNotMaching" style="color:red;">the passwords don't match !</span>
           <input matInput type="password" id="password-confirmation" name="password-confirmation" [(ngModel)]="passwordConfirmation" required="required" placeholder="password-confirmation"> 
         </mat-form-field>
+        <mat-form-field style="width: 100%">
+          <input matInput type="address" id="address" name="password-confirmation" [(ngModel)]="addressLivraison" required="required" placeholder="addressLivraison"> 
+        </mat-form-field>    
+        <mat-form-field style="width: 100%">
+          <input matInput type="tel" id="tel" name="tel" [(ngModel)]="telephone" required="required" placeholder="telephone"> 
+        </mat-form-field>              
         <mat-form-field>
           <select [(ngModel)]="mode" name="mode" matNativeControl required>
             <option value="livreur">livreur</option>

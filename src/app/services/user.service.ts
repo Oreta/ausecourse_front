@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable' ;
 import {Router} from '@angular/router' ;
 import {User} from '../models/user' ;
 import {AppConst} from '../constants/app-const' ;
-
+import {Order} from '../models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -52,14 +52,16 @@ export class UserService {
 
 
 
-	newUser(username: string, email:string, password: string, mode :string) {
+	newUser(username: string, email:string, password: string, mode :string, addressLivraison:string, telephone:number) {
 		console.log("mode  " + mode);
 		let url = this.serverPath+'/user/newUser';
 		let userInfo = {
 			"username" : username,
 			"email" : email,
 			"password" : password,
-			"mode" : mode 
+			"mode" : mode ,
+			"addressLivraison" : addressLivraison ,
+			"telephone" : telephone
 		}
 		let tokenHeader = new Headers({
 			'Content-Type' : 'application/json',
@@ -124,24 +126,19 @@ export class UserService {
 	}
 
 	getAllOrders(user:User){
-		let url = AppConst.serverPath+"user/getAllOrders";
-		return this.httpClient.post(url,user);
+		let url = AppConst.serverPath+"order/getAllByIdClient";
+		return this.httpClient.post(url,user.id);
 	}
 
-	notifyLivreur(livreurId : string , listeCourseId : string){
+	notifyLivreur(order: Order){
 		let url = this.serverPath+'/user/notifyLivreur';
-		let userInfo = {
-			"livreurId" : livreurId,
-			"listeCourseId" : listeCourseId
-		}
+
 		let tokenHeader = new Headers({
 			'Content-Type' : 'application/json',
 			'x-auth-token' : localStorage.getItem('xAuthToken')
 		});
 
-		return this.http.post(url, JSON.stringify(userInfo), {headers : tokenHeader});
-
-
+		return this.http.post(url, order, {headers : tokenHeader});
 	}
 
 	getNotifications(id : string){
@@ -154,5 +151,16 @@ export class UserService {
 
 		return this.http.post(url, id, {headers : tokenHeader});
 
+	}
+
+	getUserById(userId : string){
+		let url = this.serverPath+'/user/getUserById';
+
+		let tokenHeader = new Headers({
+			'Content-Type' : 'application/json',
+			'x-auth-token' : localStorage.getItem('xAuthToken')
+		});
+
+		return this.http.post(url, userId, {headers : tokenHeader});
 	}
 }

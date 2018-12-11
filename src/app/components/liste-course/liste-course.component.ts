@@ -15,10 +15,9 @@ export class ListeCourseComponent implements OnInit {
 
   private productsList: Product[] = [];
   private listeCourse : ListeCourse = new ListeCourse(); 
-  private listaux = {} as any ; 
+  private listaux : Product[] = [] ; 
   private name : string ; 
   private qty : number ;
-  private product:Product;
   private productAdded : boolean ; 
   private currentUser : User ;
   private listeCourseSaved : boolean ; 
@@ -34,14 +33,27 @@ export class ListeCourseComponent implements OnInit {
     this.productService.getProductList().subscribe(
       (res:ListeCourse) => {
         this.listeCourse = res ; 
-        
-        console.log("liste courses : " + this.listeCourse.liste );
-         
+        this.listaux = res.listeCourse;
+   
       },
       error => {
         console.log(error);      
       }
     );
+  }
+
+  onCheckout(){
+    /*
+      this.productService.save(this.listeCourse).subscribe(
+        (res:string) => {
+          this.cookieService.put("listId",res);
+          this.productAdded = true ; 
+          this.getProductList();
+        },
+        error => {
+          console.log(error);      
+        }      
+      ); */    
   }
 
   onAddProduct(){
@@ -49,14 +61,14 @@ export class ListeCourseComponent implements OnInit {
     this.productService.addProduct(this.name,this.qty).subscribe(
       (res:string) => {
         this.productAdded = true ; 
-        this.listaux[this.name] = this.qty;
+        //this.listaux[this.name] = this.qty;
         this.getProductList();
       },
       error => {
         console.log(error);      
       }
     );
-  }
+  } 
 
   ngOnInit() {
 
@@ -64,17 +76,22 @@ export class ListeCourseComponent implements OnInit {
       res => {
         this.currentUser = res.json() ;
         this.listeCourse.mail = this.currentUser.email ; 
-        this.productService.save(this.listeCourse).subscribe(
-          (res:string) => {
-            this.listeCourseSaved = true ;
-            this.cookieService.put("listId",res);
-            //this.getProductList();
-          },
-          error => {
-            console.log(error); 
-            this.productAdded = false ;
-          }
-        );
+        if(this.cookieService.get("listId") == null){
+          this.productService.save(this.listeCourse).subscribe(
+            (res:string) => {
+              this.listeCourseSaved = true ;
+              this.cookieService.put("listId",res);
+              this.getProductList();
+            },
+            error => {
+              console.log(error); 
+              this.productAdded = false ;
+            }
+          );          
+        }else {
+          this.getProductList();
+        }
+
 
       },
       error => {
@@ -82,8 +99,6 @@ export class ListeCourseComponent implements OnInit {
       }      
     );
 
-
-    
   }
 
 }

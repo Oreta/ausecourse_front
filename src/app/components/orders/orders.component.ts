@@ -24,13 +24,11 @@ export class OrdersComponent implements OnInit {
 			console.log(error) ; 
 		}  		
   	);
-
-  	
+ 	
   }
 
   ngOnInit() {
-  	// decommenter quand le back est pret 
-  	/*
+
   	this.userService.getCurrentUser().subscribe(
       res => {
         this.currentUser = res.json(); 
@@ -40,7 +38,7 @@ export class OrdersComponent implements OnInit {
         console.log(error);
       }     
   	);   
-  	*/ 	
+
   }
 
 }

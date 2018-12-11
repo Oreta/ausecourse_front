@@ -1,3 +1,29 @@
-<p>
-  livreur-dashboard works!
-</p>
+<div class="container border" style="margin-top: 40px; width: 50%;">
+
+        <div style="margin-left: 15%; margin-bottom: 10%; ">
+
+          <h3>commandes en attente de votre reponse :</h3>
+          <br>
+
+          <table border="1">
+            <thead>
+            <tr>
+              <th>commande</th>
+              <th>action</th>   
+            </tr>
+            </thead>
+
+            <tbody *ngFor="let item of courses">
+            <tr>
+              <td (click)="onDisplayOrder()">{{item.id}}</td>
+              <td>
+              	<button mat-button [disabled]="accepted" (click)="onAccept(item)">accepter</button>
+              	<button mat-button (click)="onRefuse(item)">refuser</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+</div>

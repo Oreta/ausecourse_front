@@ -1,0 +1,28 @@
+<div class="container border" style="margin-top: 40px; width: 60%; ">
+	<h3> commande id : {{id}} </h3> <br> 
+
+	<h4> adresse : {{client.road}}   </h4>
+    <h4> tel : {{client.tel}}  </h4>
+          <br>
+          <table style="margin-bottom: 5%;" border="1">
+            <thead>
+            <tr>
+              <th>Produit</th>
+              <th>Quantite</th>   
+            </tr>
+            </thead>
+
+            <tbody *ngFor="let item of listeCourse.listeCourse">
+            <tr>
+              <td>{{item.nom}}</td>
+              <td>{{item.prix}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <div style="margin-bottom: 2%;">
+	          <button mat-button (click)="onProgress()">in progress</button>
+	          <button mat-button (click)="onDelivered()">delivered</button>
+	          <button mat-button (click)="onPaid()">paid</button>
+	       </div>
+
+</div>

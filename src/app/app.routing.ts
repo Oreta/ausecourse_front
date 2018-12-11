@@ -9,6 +9,7 @@ import {LivreursComponent} from './components/livreurs/livreurs.component' ;
 import {PaymentComponent} from './components/payment/payment.component' ;
 import {OrdersComponent} from './components/orders/orders.component' ;
 import {LivreurDashboardComponent} from './components/livreur-dashboard/livreur-dashboard.component' ;
+import {OrderDetailsComponent} from './components/order-details/order-details.component' ;
 
 const appRoutes: Routes = [
 	{
@@ -51,6 +52,10 @@ const appRoutes: Routes = [
 	{
 		path: 'livreurDashboard' ,
 		component: LivreurDashboardComponent
+	},
+	{
+		path: 'orderDetails/:id/:clientId' ,
+		component: OrderDetailsComponent
 	}
 
 

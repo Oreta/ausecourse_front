@@ -54,7 +54,8 @@ import { ListeCourseComponent } from './components/liste-course/liste-course.com
 import { LivreursComponent } from './components/livreurs/livreurs.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { LivreurDashboardComponent } from './components/livreur-dashboard/livreur-dashboard.component' ;
+import { LivreurDashboardComponent } from './components/livreur-dashboard/livreur-dashboard.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component' ;
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { LivreurDashboardComponent } from './components/livreur-dashboard/livreu
     LivreursComponent,
     PaymentComponent,
     OrdersComponent,
-    LivreurDashboardComponent
+    LivreurDashboardComponent,
+    OrderDetailsComponent
   ],
   imports: [
 	BrowserModule,
