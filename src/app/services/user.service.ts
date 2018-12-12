@@ -13,7 +13,7 @@ import {Order} from '../models/order';
 })
 export class UserService {
 
-	private serverPath: string = "https://ausecourse.herokuapp.com/" ;
+	private serverPath: string = "http://127.0.0.1:8080" ;
 
 	constructor(private http: Http, private router:Router,
 		private httpClient : HttpClient) { }

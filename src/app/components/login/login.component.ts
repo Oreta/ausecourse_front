@@ -13,7 +13,7 @@ import {Http} from '@angular/http';
 })
 export class LoginComponent implements OnInit {
 
-	private serverPath = "https://ausecourse.herokuapp.com/" ;
+	private serverPath = "http://127.0.0.1:8080" ;
 	private loginError: boolean = false;
 	private loggedIn = false ;
 	private credential = {'username' : '', 'password' : '' } ;
