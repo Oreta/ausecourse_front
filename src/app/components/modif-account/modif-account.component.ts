@@ -13,7 +13,7 @@ import {User} from '../../models/user' ;
 })
 
 export class ModifAccountComponent implements OnInit {
-  private serverPath = "http://127.0.0.1:8080" ;
+  private serverPath = "https://ausecourse.herokuapp.com/" ;
   private loginError: boolean = false;
   private loggedIn = false ;
   private credential = {'username' : '', 'password' : '' } ;

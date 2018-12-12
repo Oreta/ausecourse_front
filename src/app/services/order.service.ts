@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-import { Order } from '../models/order' ; 
+import { Order } from '../models/order' ;
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-	private serverPath: string = "http://127.0.0.1:8080" ;
+	private serverPath: string = "https://ausecourse.herokuapp.com/" ;
 
   constructor(private httpClient : HttpClient) { }
 
@@ -20,7 +20,7 @@ export class OrderService {
 			'x-auth-token' : localStorage.getItem('xAuthToken')
 		});
 
-		return this.httpClient.post(url, order, {headers : tokenHeader});  	
+		return this.httpClient.post(url, order, {headers : tokenHeader});
   }
 
   getOrderByListId(listId:string){
@@ -31,7 +31,7 @@ export class OrderService {
 			'x-auth-token' : localStorage.getItem('xAuthToken')
 		});
 
-		return this.httpClient.post(url, listId, {headers : tokenHeader});  
+		return this.httpClient.post(url, listId, {headers : tokenHeader});
   }
 
   getListByOrderId(orderId:string) {
@@ -42,7 +42,7 @@ export class OrderService {
 		'x-auth-token' : localStorage.getItem('xAuthToken')
 	});
 
-	return this.httpClient.post(url, orderId, {headers : tokenHeader});   	
+	return this.httpClient.post(url, orderId, {headers : tokenHeader});
   }
 
   acceptOrder(idOrder:string){
@@ -53,7 +53,7 @@ export class OrderService {
 			'x-auth-token' : localStorage.getItem('xAuthToken')
 		});
 
-		return this.httpClient.post(url, idOrder, {headers : tokenHeader});  
+		return this.httpClient.post(url, idOrder, {headers : tokenHeader});
   }
 
   onDelivered(idOrder:string){
@@ -64,8 +64,8 @@ export class OrderService {
 			'x-auth-token' : localStorage.getItem('xAuthToken')
 		});
 
-		return this.httpClient.post(url, idOrder, {headers : tokenHeader});  
-  }  
+		return this.httpClient.post(url, idOrder, {headers : tokenHeader});
+  }
 
   onPaid(idOrder:string){
 		let url = this.serverPath+'/order/orderPayed';
@@ -75,7 +75,7 @@ export class OrderService {
 			'x-auth-token' : localStorage.getItem('xAuthToken')
 		});
 
-		return this.httpClient.post(url, idOrder, {headers : tokenHeader});    	
+		return this.httpClient.post(url, idOrder, {headers : tokenHeader});
 
   }
 
