@@ -4,12 +4,12 @@
 	</div>
 
 	<div style="margin-left: 40%;" [hidden]="!loggedIn">
-		<button mat-button [matMenuTriggerFor]="menu"> Bonjour {{user.username}} </button>
+		<button *ngIf="user" mat-button [matMenuTriggerFor]="menu"> Bonjour {{user.username}} </button>
 		<mat-menu #menu="matMenu">
 			<button mat-menu-item routerLink="/displayAccount">Afficher_Compte</button>
 			<button mat-menu-item routerLink="/modifAccount">Modifier_Compte</button>
 		</mat-menu>
-		<button [hidden]="!user.deliverer" mat-button routerLink="/livreurDashboard">mes notifications</button>
+		<button *ngIf="user" [hidden]="!user.deliverer" mat-button routerLink="/livreurDashboard">mes notifications</button>
 		<button mat-button routerLink="/orders">mes commandes</button>
 		<button mat-button routerLink="/course">passer une commande</button>
 		<button mat-button (click)="logout()" value="Logout" class="button">Log out</button>

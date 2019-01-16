@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="user">
   <h2>Register</h2>
   <div class="alert alert-info" *ngIf="Update">Your informations are update</div>
   <form (ngSubmit)="onUpdateAccount()" *ngIf="user">
