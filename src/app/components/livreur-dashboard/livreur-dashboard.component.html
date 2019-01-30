@@ -15,7 +15,7 @@
 
             <tbody *ngFor="let item of courses">
             <tr>
-              <td (click)="onDisplayOrder()">{{item.id}}</td>
+              <td (click)="onDisplayOrder()">{{item.address}}</td>
               <td>
               	<button mat-button [disabled]="accepted" (click)="onAccept(item)">accepter</button>
               	<button mat-button (click)="onRefuse(item)">refuser</button>

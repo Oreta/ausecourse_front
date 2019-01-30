@@ -24,7 +24,6 @@ export class OrdersComponent implements OnInit {
 			console.log(error) ; 
 		}  		
   	);
- 	
   }
 
   ngOnInit() {
@@ -32,6 +31,7 @@ export class OrdersComponent implements OnInit {
   	this.userService.getCurrentUser().subscribe(
       res => {
         this.currentUser = res.json(); 
+        console.log("orders checking address ... " + this.currentUser.city); 
         this.getAllOrders(this.currentUser); 
       },
       error => {

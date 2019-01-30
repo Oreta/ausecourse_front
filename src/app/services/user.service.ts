@@ -53,7 +53,7 @@ export class UserService {
 
 
 	newUser(username: string, email:string, password: string, mode :string, addressLivraison:string, telephone:number) {
-		console.log("mode  " + mode);
+		console.log("new userr  " + addressLivraison);
 		let url = this.serverPath+'/user/newUser';
 		let userInfo = {
 			"username" : username,
@@ -127,7 +127,9 @@ export class UserService {
 
 	getAllOrders(user:User){
 		let url = AppConst.serverPath+"order/getAllByIdClient";
-		return this.httpClient.post(url,user.id);
+
+		var id = user.id ;
+		return this.httpClient.post(url,id);
 	}
 
 	notifyLivreur(order: Order){

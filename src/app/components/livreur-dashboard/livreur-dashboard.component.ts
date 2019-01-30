@@ -27,6 +27,7 @@ export class LivreurDashboardComponent implements OnInit {
     this.userService.getNotifications(id).subscribe(
       res => {
         this.courses = res.json() ; 
+        
       },
       error => {
         console.log(error); 
@@ -83,12 +84,15 @@ export class LivreurDashboardComponent implements OnInit {
       }
     );
 
+
+
     this.userService.getCurrentUser().subscribe(
       res => {
         this.user = res.json(); 
         this.userService.getNotifications(this.user.id).subscribe(
 	      res  => {
 	        this.courses = res.json(); 
+          
 	      },
 	      error => {
 	        console.log(error) ;

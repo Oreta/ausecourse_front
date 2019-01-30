@@ -40,7 +40,9 @@ export class LivreursComponent implements OnInit {
   	//notify livreur 
     let order = new Order(); 
     order.clientID = this.currentUser.id ; 
-    order.livreurId = livreur.id;  
+    order.livreurId = livreur.id; 
+    console.log("addresss " + this.currentUser.city) ;
+    order.address = this.currentUser.Road ;  
     order.listeCourse = this.listCourse ;
     this.userService.notifyLivreur(order).subscribe(
       res => {
@@ -50,6 +52,7 @@ export class LivreursComponent implements OnInit {
         console.log(error);      
       }      
     );//this.cookieService.get("listId"));
+    this.cookieService.remove("listId");
   	window.location.href = "http://localhost:4200/orders" ;
   }
 

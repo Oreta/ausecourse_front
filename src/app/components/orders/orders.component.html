@@ -3,7 +3,9 @@
 
 	<mat-nav-list>
 	  <mat-list-item *ngFor="let order of orders">
-	     <a matLine>{{order.id}}</a>
+	     <div nowrap matLine *ngFor="let product of order.listeCourse.listeCourse" >
+	     	{{product.nom}} 
+	     </div> 
 	     <button mat-icon-button>
 	        <mat-icon>{{order.orderState}}</mat-icon>
 	     </button>

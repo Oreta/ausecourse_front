@@ -77,6 +77,7 @@ export class ListeCourseComponent implements OnInit {
         this.currentUser = res.json() ;
         this.listeCourse.mail = this.currentUser.email ; 
         if(this.cookieService.get("listId") == null){
+          this.listeCourse.address = this.currentUser.city ; 
           this.productService.save(this.listeCourse).subscribe(
             (res:string) => {
               this.listeCourseSaved = true ;
