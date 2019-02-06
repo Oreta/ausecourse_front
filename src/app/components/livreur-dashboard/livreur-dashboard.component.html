@@ -1,29 +1,86 @@
-<div class="container border" style="margin-top: 40px; width: 50%;">
+<div class="container border" style="margin-top: 40px; width: 40%;">
 
-        <div style="margin-left: 15%; margin-bottom: 10%; ">
+        
 
-          <h3>commandes en attente de votre reponse :</h3>
+          <h3 style="margin-left: 20%; margin-top: 2%;">Liste de vos commandes :</h3>
           <br>
 
-          <table border="1">
-            <thead>
-            <tr>
-              <th>commande</th>
-              <th>action</th>   
-            </tr>
-            </thead>
+          <mat-nav-list style="width: 100%; ">
+            <mat-list-item  *ngFor="let item of user.ordersToHandle">
 
-            <tbody *ngFor="let item of courses">
-            <tr>
-              <td (click)="onDisplayOrder()">{{item.address}}</td>
-              <td>
-              	<button mat-button [disabled]="accepted" (click)="onAccept(item)">accepter</button>
-              	<button mat-button (click)="onRefuse(item)">refuser</button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+                  <div *ngIf="item.orderState == 'DELIVRED'" style="background-color: #e8ff59; width:100%; height: 50%">
+                    <div class="row">
+                      <div class="col-9">
+                        <div (click)="onDisplayOrder(item)"> 
+                          {{item.address}} 
+                        </div>                       
+                      </div>
+                      <div class="col-1">
+                        <img *ngIf="item.orderState == 'CREATE'" class="accept" (click)="onAccept(item)" src="./../../../assets/accept.png" alt="accept" height="15" width="15"/>      
+                      </div> 
+                      <div class="col-2">
+                        <img *ngIf="item.orderState == 'CREATE'" class="refuse" (click)="onRefuse(item)" src="./../../../assets/refuse.png" alt="refuse" height="15" width="15"/>                         
+                      </div>                                           
+                    </div>
 
-        </div>
+                  </div>              
+
+                  <div *ngIf="item.orderState == 'INPROGRESS'" style="background-color: #ffe785; width:100%; height: 50%">
+                    <div class="row">
+                      <div class="col-9">
+                        <div (click)="onDisplayOrder(item)"> 
+                          {{item.address}} 
+                        </div>                       
+                      </div>
+                      <div class="col-1">
+                        <img *ngIf="item.orderState == 'CREATE'" class="accept" (click)="onAccept(item)" src="./../../../assets/accept.png" alt="accept" height="15" width="15"/>      
+                      </div> 
+                      <div class="col-2">
+                        <img *ngIf="item.orderState == 'CREATE'" class="refuse" (click)="onRefuse(item)" src="./../../../assets/refuse.png" alt="refuse" height="15" width="15"/>                         
+                      </div>                                           
+                    </div>
+
+                  </div> 
+
+                  <div *ngIf="item.orderState == 'CREATE'" style="background-color: #d6d6d6; width:100%; height: 50%">
+                    <div class="row">
+                      <div class="col-9">
+                        <div (click)="onDisplayOrder(item)"> 
+                          {{item.address}} 
+                        </div>                         
+                      </div>
+                      <div class="col-1">
+                        <img *ngIf="item.orderState == 'CREATE'" class="accept" (click)="onAccept(item)" src="./../../../assets/accept.png" alt="accept" height="15" width="15">                          
+                      </div>
+                      <div class="col-2">
+                        <img *ngIf="item.orderState == 'CREATE'" class="refuse" (click)="onRefuse(item)" src="./../../../assets/refuse.png" alt="refuse" height="15" width="15">                         
+                      </div>                                            
+                    </div>
+
+                  </div>
+
+                  <div *ngIf="item.orderState == 'PAYED'" style="background-color: #b4d693; width:100%; height: 50%">
+                    <div class="row">
+                      <div class="col-9">
+                        <div (click)="onDisplayOrder(item)"> 
+                          {{item.address}} 
+                        </div>                        
+                      </div>
+                      <div class="col-1">
+                        <img *ngIf="item.orderState == 'CREATE'" class="accept" (click)="onAccept(item)" src="./../../../assets/accept.png" alt="accept" height="15" width="15">                            
+                      </div>
+                      <div class="col-2">
+                        <img *ngIf="item.orderState == 'CREATE'" class="refuse" (click)="onRefuse(item)" src="./../../../assets/refuse.png" alt="refuse" height="15" width="15">                    
+                      </div>                                            
+                    </div>
+
+                  </div>                
+
+
+            </mat-list-item>
+          </mat-nav-list>           
+
+
+
 
 </div>

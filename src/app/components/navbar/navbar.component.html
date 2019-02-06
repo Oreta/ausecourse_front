@@ -1,6 +1,6 @@
 <mat-toolbar style="background: #284267; color: white; margin-bottom: 5%;">
 	<div>
-		AuseCourse
+		<a style="color: white;" routerLink="/home"> AuseCourse </a>
 	</div>
 
 	<div style="margin-left: 40%;" [hidden]="!loggedIn">
@@ -9,7 +9,7 @@
 			<button mat-menu-item routerLink="/displayAccount">Afficher_Compte</button>
 			<button mat-menu-item routerLink="/modifAccount">Modifier_Compte</button>
 		</mat-menu>
-		<button *ngIf="user" [hidden]="!user.deliverer" mat-button routerLink="/livreurDashboard">mes notifications</button>
+		<button *ngIf="user" [hidden]="!user.deliverer" mat-button routerLink="/livreurDashboard">commandes à gérer</button>
 		<button mat-button routerLink="/orders">mes commandes</button>
 		<button mat-button routerLink="/course">passer une commande</button>
 		<button mat-button (click)="logout()" value="Logout" class="button">Log out</button>

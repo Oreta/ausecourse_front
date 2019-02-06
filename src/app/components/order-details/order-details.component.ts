@@ -5,6 +5,8 @@ import { OrderService } from '../../services/order.service' ;
 import { ListeCourse } from '../../models/ListeCourse' ;
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { User } from '../../models/user' ; 
+import {MatSnackBar} from '@angular/material';
+
 
 @Component({
   selector: 'app-order-details',
@@ -23,13 +25,27 @@ export class OrderDetailsComponent implements OnInit {
   	private orderService : OrderService , 
   	private productService : ProductService,
   	private route: ActivatedRoute,
-  	private router: Router) {}
+  	private router: Router,
+    private snackBar: MatSnackBar) {}
+
+  onProgress() {
+    this.orderService.onProgress(this.id).subscribe(
+      (res: string) => {
+         console.log(res); 
+        this.openSnackBar("onProgress");
+      },
+      error => {
+        console.log(error) ; 
+      } 
+    );
+  }
 
   onDelivered(){
 
   	this.orderService.onDelivered(this.id).subscribe(
       (res: string) => {
        	console.log(res); 
+        this.openSnackBar("Delivered");
       },
       error => {
         console.log(error) ; 
@@ -42,6 +58,8 @@ export class OrderDetailsComponent implements OnInit {
   	this.orderService.onPaid(this.id).subscribe(
       (res: string) => {
        	console.log(res); 
+        this.openSnackBar("Paid");
+
       },
       error => {
         console.log(error) ; 
@@ -49,6 +67,14 @@ export class OrderDetailsComponent implements OnInit {
   	);
 
   }
+
+  openSnackBar(state : string) {
+    console.log("open snack bar");
+    this.snackBar.open("vous avez passez l'état de cette commande à " + state, null, {
+      duration: 2000,
+    });
+
+  }      
 
   ngOnInit() {
   	this.id =this.route.snapshot.paramMap.get('id');

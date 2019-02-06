@@ -1,0 +1,35 @@
+<div class="row">
+	<div style="padding:0%; " class="col-5">
+
+		<div class="container" style=" margin-top: 40px; margin-right: 0%; width: 42%;">
+			<h5> Vore livreur : </h5> {{livreur.username}} : <img *ngIf="livreur.stars < 1" src="./../../../assets/0stars.png" alt="Smiley face" height="25" width="150">
+			<img *ngIf="livreur.stars >= 1 && livreur.stars < 2" src="./../../../assets/1stars.png" alt="Smiley face" height="25" width="150">
+			
+			<img *ngIf="livreur.stars >= 2 && livreur.stars < 3" src="./../../../assets/2stars.png" alt="Smiley face" height="25" width="150">
+			
+			<img *ngIf="livreur.stars >= 3 && livreur.stars < 4" src="./../../../assets/3stars.png" alt="Smiley face" height="25" width="150">
+			
+			<img *ngIf=" livreur.stars >= 4 && livreur.stars < 5" src="./../../../assets/4stars.png" alt="Smiley face" height="25" width="150">
+			
+			<img *ngIf=" livreur.stars == 5" src="./../../../assets/5stars.png" alt="Smiley face" height="25" width="150">
+			<br>
+			<button style="background-color: #e27e7a;" mat-button (click)="openDialog()" >Évaluer Livreur</button>
+		</div>
+
+	</div>
+	<div style="padding:0%; " class="col-7">
+		<div class="container border" style=" margin-top: 40px; width: 50%; margin-left: 0%">
+			<h3> Detail de votre commande : </h3> <br> 
+			<mat-nav-list style="width: 100%; ">
+			  <mat-list-item  *ngFor="let product of listeCourse">
+			     
+				{{product}}
+			  </mat-list-item>
+			</mat-nav-list>	
+
+		</div>
+
+	</div>
+</div>
+
+

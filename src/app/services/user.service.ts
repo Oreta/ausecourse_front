@@ -165,4 +165,21 @@ export class UserService {
 
 		return this.http.post(url, userId, {headers : tokenHeader});
 	}
+
+	makeReview(livreurId : string , nbStars : string) {
+		console.log("livreurId : " +  livreurId + " ----- " + "nbStars : " + nbStars);
+		let url = this.serverPath+'/user/makeReview';
+		let userInfo = {
+			"livreurId" : livreurId,
+			"nbStars" : nbStars,
+		}
+		let tokenHeader = new Headers({
+			'Content-Type' : 'application/json',
+			'x-auth-token' : localStorage.getItem('xAuthToken')
+		});
+
+		return this.http.post(url, JSON.stringify(userInfo), {headers : tokenHeader});
+
+	}
+
 }

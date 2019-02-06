@@ -53,7 +53,7 @@ export class OrderService {
 			'x-auth-token' : localStorage.getItem('xAuthToken')
 		});
 
-		return this.httpClient.post(url, idOrder, {headers : tokenHeader});
+		return this.httpClient.post(url, idOrder, {headers : tokenHeader,responseType:'text'});
   }
 
   onDelivered(idOrder:string){
@@ -64,7 +64,7 @@ export class OrderService {
 			'x-auth-token' : localStorage.getItem('xAuthToken')
 		});
 
-		return this.httpClient.post(url, idOrder, {headers : tokenHeader});
+		return this.httpClient.post(url, idOrder, {headers : tokenHeader,responseType:'text'});
   }
 
   onPaid(idOrder:string){
@@ -75,9 +75,21 @@ export class OrderService {
 			'x-auth-token' : localStorage.getItem('xAuthToken')
 		});
 
-		return this.httpClient.post(url, idOrder, {headers : tokenHeader});
+		return this.httpClient.post(url, idOrder, {headers : tokenHeader,responseType:'text'});
 
   }
 
+  onProgress(idOrder : string){
+		let url = this.serverPath+'/order/orderInProgress';
+
+		let tokenHeader = new HttpHeaders({
+			'Content-Type' : 'application/json',
+			'x-auth-token' : localStorage.getItem('xAuthToken')
+		});
+
+		return this.httpClient.post(url, idOrder, {headers : tokenHeader,responseType:'text'});
+  	
+
+  }
 
 }

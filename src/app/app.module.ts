@@ -55,7 +55,8 @@ import { LivreursComponent } from './components/livreurs/livreurs.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { LivreurDashboardComponent } from './components/livreur-dashboard/livreur-dashboard.component';
-import { OrderDetailsComponent } from './components/order-details/order-details.component' ;
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { OrderDetailsClientComponent,DialogOverviewExampleDialog } from './components/order-details-client/order-details-client.component' ;
 
 @NgModule({
   declarations: [
@@ -70,8 +71,11 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
     PaymentComponent,
     OrdersComponent,
     LivreurDashboardComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    OrderDetailsClientComponent,
+    DialogOverviewExampleDialog
   ],
+  entryComponents: [DialogOverviewExampleDialog],
   imports: [
 	BrowserModule,
 	FormsModule,

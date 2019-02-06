@@ -1,13 +1,32 @@
-<div class="container border" style="margin-top: 40px; width: 50%;">
+<div class="container border" style="margin-top: 40px; width: 40%;">
 
 <h3> Choisissez un livreur autour de vous :</h3> <br>
-<mat-nav-list>
-  <mat-list-item *ngFor="let livreur of livreurs">
-     <a matLine (click)="onNotifyLivreur(livreur)">{{ livreur.username }}</a>
-     <button mat-icon-button>
-        <mat-icon>infos</mat-icon>
-     </button>
-  </mat-list-item>
+<mat-nav-list style="width: 50%;">
+     <mat-list-item *ngFor="let livreur of livreurs">
+          <a *ngIf="livreur.stars < 1" matLine (click)="onNotifyLivreur(livreur)">{{ livreur.username }} &nbsp;
+          	<img src="./../../../assets/0stars.png" alt="Smiley face" height="25" width="150">
+          </a>
+
+          <a *ngIf="livreur.stars >= 1 && livreur.stars < 2" matLine (click)="onNotifyLivreur(livreur)">{{ livreur.username }} &nbsp;
+          	<img src="./../../../assets/1stars.png" alt="Smiley face" height="25" width="150">
+          </a>     
+          <a *ngIf="livreur.stars >= 2 && livreur.stars < 3" matLine (click)="onNotifyLivreur(livreur)">{{ livreur.username }} &nbsp;
+          	<img src="./../../../assets/2stars.png" alt="Smiley face" height="25" width="150">
+          </a> 
+          <a *ngIf="livreur.stars >= 3 && livreur.stars < 4" matLine (click)="onNotifyLivreur(livreur)">{{ livreur.username }} &nbsp;
+          	<img src="./../../../assets/3stars.png" alt="Smiley face" height="25" width="150">
+          </a>             
+             
+          <a *ngIf=" livreur.stars >= 4 && livreur.stars < 5" matLine (click)="onNotifyLivreur(livreur)">{{ livreur.username }} &nbsp;
+          	<img src="./../../../assets/4stars.png" alt="Smiley face" height="25" width="150">
+          </a>   
+          <a *ngIf=" livreur.stars == 5" matLine (click)="onNotifyLivreur(livreur)">{{ livreur.username }} &nbsp;
+          	<img src="./../../../assets/5stars.png" alt="Smiley face" height="25" width="150">
+          </a>   
+
+     </mat-list-item>
 </mat-nav-list>
+
+
 
 

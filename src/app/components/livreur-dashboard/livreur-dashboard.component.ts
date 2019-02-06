@@ -5,6 +5,8 @@ import {Order} from '../../models/order' ;
 import {ListeCourse} from "../../models/ListeCourse" ;
 import {OrderService} from "../../services/order.service" ; 
 import {Router} from '@angular/router' ;
+import {OrderState} from '../../models/orderState' ;
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-livreur-dashboard',
@@ -19,59 +21,39 @@ export class LivreurDashboardComponent implements OnInit {
   private order : Order ;
   private accepted : boolean ; 
 
+
   constructor(private router : Router , 
     private userService: UserService,
-    private orderService : OrderService) { }
+    private orderService : OrderService,
+    private snackBar: MatSnackBar) { }
 
-  getNotification(id:string){
-    this.userService.getNotifications(id).subscribe(
-      res => {
-        this.courses = res.json() ; 
-        
-      },
-      error => {
-        console.log(error); 
-      }    
-    );
-  }
 
-  getOrderByListId(listId:string){
-    this.orderService.getOrderByListId(listId).subscribe(
-      (res:Order) => {
-        this.order = res ;
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
 
-  onAccept(listCourse : ListeCourse){
-    this.orderService.getOrderByListId(listCourse.id).subscribe(
-      (res:Order) => {
-        this.order = res ;
-        this.orderService.acceptOrder(this.order.id).subscribe(
+  onAccept(order : Order){
+        this.orderService.acceptOrder(order.id).subscribe(
           (res:string) => {
             console.log(res); 
             this.accepted = true ;
+            this.openSnackBar();
           },
           error => {
             console.log(error);
           }
-        );
-      },
-      error => {
-        console.log(error);
-      }
-    );    
+        );    
   }
+
+  openSnackBar() {
+    this.snackBar.open("vous venez d'accepter une commande", null, {
+      duration: 2000,
+    });
+  }    
 
   onRefuse(){
 
   }
 
-  onDisplayOrder() {
-    this.router.navigate(['/orderDetails',this.order.id, this.order.clientID]);
+  onDisplayOrder(order :Order) {
+    this.router.navigate(['/orderDetails',order.id, order.clientID]);
   }
 
   ngOnInit() {
@@ -89,15 +71,7 @@ export class LivreurDashboardComponent implements OnInit {
     this.userService.getCurrentUser().subscribe(
       res => {
         this.user = res.json(); 
-        this.userService.getNotifications(this.user.id).subscribe(
-	      res  => {
-	        this.courses = res.json(); 
-          
-	      },
-	      error => {
-	        console.log(error) ;
-	      }        	
-       	);
+
       },
       error => {
         this.loggedIn=false;

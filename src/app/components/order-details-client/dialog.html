@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Évaluation de : {{data.livreur.username}}</h1>
+<div mat-dialog-content>
+  	<p>Combien d'étoiles donnez vous à votre livreur ? </p>
+
+	<mat-form-field>
+	  <mat-select [(ngModel)]= "data.nbStars" placeholder="Évaluez ici !">
+	    <mat-option [value]="5"> 5 étoiles </mat-option>
+	    <mat-option [value]="4"> 4 étoiles </mat-option>
+	    <mat-option [value]="3"> 3 étoiles </mat-option>
+	    <mat-option [value]="2"> 2 étoiles </mat-option>
+	    <mat-option [value]="1"> 1 étoiles </mat-option>
+	    <mat-option [value]="0"> 0 étoiles </mat-option>
+	  </mat-select>
+	</mat-form-field> 
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="makeReview()" [mat-dialog-close]="data.nbStars" cdkFocusInitial>Ok</button>
+</div>

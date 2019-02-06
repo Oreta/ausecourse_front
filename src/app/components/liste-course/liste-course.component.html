@@ -1,6 +1,6 @@
 
 
-<div class="container border" style="margin-top: 40px; ">
+<div class="container border" style="margin-top: 180px;">
   <mat-grid-list cols="2" rowHeight="3:2">
     <mat-grid-tile>
 
@@ -15,8 +15,7 @@
           <input matInput [(ngModel)]="qty" name="qty" placeholder="quantité">
         </mat-form-field> 
         <br>
-        <button mat-button type="submit" value="Submit">Ajouter</button>
-        <button mat-button routerLink="/livreurs">checkout</button>
+        <button mat-button style="background-color: #284267; color: white; margin-left:22%;" class="w3-button" type="submit" value="Submit">Ajouter</button>
 
       </form>    
 
@@ -43,8 +42,14 @@
             </tr>
             </tbody>
           </table>
+                  <br>
+        
+
+          <button (click)="onCheckout()"  style="background-color: #284267; color: white; width: 130%;" class="w3-button w3-padding-large w3-large w3-margin-top">Checkout</button>
 
         </div>
+
+    
      
     </mat-grid-tile>
 

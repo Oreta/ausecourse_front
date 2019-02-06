@@ -10,6 +10,7 @@ import {PaymentComponent} from './components/payment/payment.component' ;
 import {OrdersComponent} from './components/orders/orders.component' ;
 import {LivreurDashboardComponent} from './components/livreur-dashboard/livreur-dashboard.component' ;
 import {OrderDetailsComponent} from './components/order-details/order-details.component' ;
+import {OrderDetailsClientComponent} from './components/order-details-client/order-details-client.component' ;
 
 const appRoutes: Routes = [
 	{
@@ -18,7 +19,7 @@ const appRoutes: Routes = [
 		pathMatch: 'full'
 	},
 	{
-		path: 'login' ,
+		path: '' ,
 		component: LoginComponent
 	},
 	{
@@ -56,6 +57,10 @@ const appRoutes: Routes = [
 	{
 		path: 'orderDetails/:id/:clientId' ,
 		component: OrderDetailsComponent
+	},
+	{
+		path: 'orderDetailsClient/:livreurId/:listeCourse' ,
+		component: OrderDetailsClientComponent
 	}
 
 

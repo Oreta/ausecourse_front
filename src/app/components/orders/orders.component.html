@@ -1,17 +1,26 @@
 <div class="container border" style="margin-top: 40px; width: 30%;">
 	<h3> Vos commandes et leur etat ! </h3> <br> 
 
-	<mat-nav-list>
-	  <mat-list-item *ngFor="let order of orders">
-	     <div nowrap matLine *ngFor="let product of order.listeCourse.listeCourse" >
-	     	{{product.nom}} 
-	     </div> 
-	     <button mat-icon-button>
-	        <mat-icon>{{order.orderState}}</mat-icon>
-	     </button>
+	<mat-nav-list style="width: 100%; ">
+	  <mat-list-item  *ngFor="let order of orders">
+	     
+	    <div routerLink="/orderDetailsClient/{{order.livreurId}}/{{order.string}}" class="row" style="width: 100%; margin: 0px;"> 
+	    	<div class="col-8">
+	    		{{order.string}} 
+	    	</div>
+	    	<div class="col-4">
+				<button *ngIf="order.orderState == 'DELIVRED'" mat-button style="background-color: #e8ff59; text-align: center; width: 100% ; font-size: 60%;">{{order.orderState}}</button>	    		
+				<button *ngIf="order.orderState == 'INPROGRESS'" mat-button style="background-color: #ffe785; text-align: center; width: 100% ; font-size: 60%;">{{order.orderState}}</button>
+			    <button *ngIf="order.orderState == 'CREATE'" mat-button style="background-color: #d6d6d6; width: 100% ; text-align: center; font-size: 60%;">{{order.orderState}}</button>
+			
+				<button *ngIf="order.orderState == 'PAYED'" mat-button style="background-color: #b4d693; width: 100% ; text-align: center; font-size: 60%;">{{order.orderState}}</button>
+	    	</div>
+	    	
+	    </div>
+
 	  </mat-list-item>
 	</mat-nav-list>	
 
-
-
 </div>
+
+

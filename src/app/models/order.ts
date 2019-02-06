@@ -7,4 +7,5 @@ export class Order {
 	public livreurId : string ; 
 	public listeCourse : ListeCourse ;
 	public orderState : OrderState ;
+	public string :string = "" ; 
 }

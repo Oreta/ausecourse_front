@@ -11,14 +11,25 @@ import {User} from "../../models/user" ;
 export class OrdersComponent implements OnInit {
 
 	private orders : Order[] ; 
-	private currentUser : User ; 
+	private currentUser : User ;
+ 
 
   constructor(private userService :UserService) { }
 
   getAllOrders(user:User) {
   	this.userService.getAllOrders(user).subscribe(
 		(res:Order[]) => {
-			this.orders = res ; 
+			this.orders = res ;
+
+      for (let i = 0; i < this.orders.length ; i++) {
+        console.log("baba : " + this.orders[i].listeCourse );
+        this.orders[i].string = this.orders[i].listeCourse.listeCourse[0].nom;
+        for (let j = 1; j < this.orders[i].listeCourse.listeCourse.length ; j++) {
+          this.orders[i].string = this.orders[i].string + ", " + this.orders[i].listeCourse.listeCourse[j].nom ;   
+        }  
+             
+      }
+
 		},
 		error => {
 			console.log(error) ; 
@@ -31,8 +42,8 @@ export class OrdersComponent implements OnInit {
   	this.userService.getCurrentUser().subscribe(
       res => {
         this.currentUser = res.json(); 
-        console.log("orders checking address ... " + this.currentUser.city); 
         this.getAllOrders(this.currentUser); 
+
       },
       error => {
         console.log(error);

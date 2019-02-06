@@ -5,6 +5,8 @@ import {CookieService} from 'angular2-cookie/core';
 import {Product} from '../../models/product' ;
 import {User} from '../../models/user'; 
 import {ListeCourse} from "../../models/ListeCourse" ;
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-liste-course',
@@ -25,7 +27,10 @@ export class ListeCourseComponent implements OnInit {
   constructor(
 	  	private productService: ProductService,
       private cookieService : CookieService,
-      private userService : UserService) { 
+      private userService : UserService,
+        private route: ActivatedRoute,
+  private router: Router,
+  private snackBar: MatSnackBar) { 
     
   }
 
@@ -42,18 +47,19 @@ export class ListeCourseComponent implements OnInit {
     );
   }
 
+  openSnackBar() {
+    this.snackBar.open("ajoutez au moins 1 produit à votre liste :(", null, {
+      duration: 5000,
+    });
+
+  }    
+
   onCheckout(){
-    /*
-      this.productService.save(this.listeCourse).subscribe(
-        (res:string) => {
-          this.cookieService.put("listId",res);
-          this.productAdded = true ; 
-          this.getProductList();
-        },
-        error => {
-          console.log(error);      
-        }      
-      ); */    
+    if(this.listaux.length==0){
+      this.openSnackBar();
+    }
+    else
+      this.router.navigate(['/livreurs']); 
   }
 
   onAddProduct(){

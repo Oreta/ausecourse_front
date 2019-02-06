@@ -6,6 +6,7 @@ import {CookieService} from 'angular2-cookie/core';
 import {Order} from '../../models/order' ; 
 import {ListeCourse} from '../../models/ListeCourse' ; 
 import {OrderService} from '../../services/order.service' ;
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-livreurs',
@@ -21,7 +22,8 @@ export class LivreursComponent implements OnInit {
   constructor(private userService : UserService ,
     private orderService : OrderService , 
     private productService : ProductService ,
-    private cookieService : CookieService) { }
+    private cookieService : CookieService,
+    private snackBar: MatSnackBar) { }
 
   // en parametre le user qui est le client
   // la liste qui est retournee, contient les users qui sont des livreurs au fait
@@ -42,20 +44,33 @@ export class LivreursComponent implements OnInit {
     order.clientID = this.currentUser.id ; 
     order.livreurId = livreur.id; 
     console.log("addresss " + this.currentUser.city) ;
-    order.address = this.currentUser.Road ;  
+    order.address = this.currentUser.city ;  
     order.listeCourse = this.listCourse ;
     this.userService.notifyLivreur(order).subscribe(
       res => {
         console.log(res);
+        this.openSnackBar();
       },
       error => {
         console.log(error);      
       }      
     );//this.cookieService.get("listId"));
-    this.cookieService.remove("listId");
-  	window.location.href = "http://localhost:4200/orders" ;
+
   }
 
+  sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+
+  async openSnackBar() {
+    this.snackBar.open("votre commande est enregistrée, vous allez être redirigé à la page d'acceuil.", null, {
+      duration: 5000,
+    });
+    await this.sleep(5000);
+    this.cookieService.remove("listId");
+    window.location.href = "http://localhost:4200/home" ;
+  }  
 
   ngOnInit() {
 

@@ -1,3 +1,5 @@
+import {Review} from './review' ;
+import {Order} from './order' ;
 export class User {
 	public id:string ;
 	public username:string;
@@ -9,4 +11,7 @@ export class User {
 	public tel:number;
 	public client : boolean ; 
 	public deliverer : boolean ;
+	public stars : number ; 
+	public reviews : Review[] = [] ; 
+	public ordersToHandle : Order[] = [] ; 
 }
