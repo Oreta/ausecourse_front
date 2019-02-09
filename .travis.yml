@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "7"
+  - "8"
 sudo: true
 dist: trusty
 
@@ -16,8 +16,9 @@ before_script:
  - sudo apt-get install -y libappindicator1 fonts-liberation
  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
  - sudo dpkg -i google-chrome*.deb
+ - npm install -g @angular/cli
 
 script:
   - ng test --watch false -cc
   - npm run e2e
-  - ng build -bh "https://ahsanayaz.github.io/ng-traffic-ci/"
+  - ng build
