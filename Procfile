@@ -1,1 +1,1 @@
-web ng serve --port $PORT
+web ng serve --prod --port $PORT
