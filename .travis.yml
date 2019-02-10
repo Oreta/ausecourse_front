@@ -13,3 +13,8 @@ before_script:
 
 script:
 - ng build --prod --base-href https://Oreta.github.io/testIntegration/
+deploy:
+  provider: heroku
+  api_key:
+    secure: 64ad335d-ff42-44ce-9c7e-67bc17c61ebe
+  app: ausecourseapplication
