@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-	private clientPaid : boolean = false ; 
+	public clientPaid : boolean = false ; 
 
   constructor() { }
 
   onPaid() {
-  	this.clientPaid = true; 
+  	this.clientPaid = true;
   }
 
   ngOnInit() {

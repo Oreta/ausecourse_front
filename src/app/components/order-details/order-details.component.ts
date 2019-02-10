@@ -15,10 +15,10 @@ import {MatSnackBar} from '@angular/material';
 })
 export class OrderDetailsComponent implements OnInit {
 
-	private listeCourse: ListeCourse ;
-	private id : string ; //order id
-	private clientId: string ;
-	private client : User ;
+	public listeCourse: ListeCourse ;
+	public id : string ; //order id
+	public clientId: string ;
+	public client : User ;
 
 
   constructor(private userService :UserService,

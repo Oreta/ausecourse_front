@@ -13,27 +13,27 @@ import {User} from '../../models/user' ;
 })
 
 export class ModifAccountComponent implements OnInit {
-  private serverPath = "http://127.0.0.1:8080" ;
-  private loginError: boolean = false;
-  private loggedIn = false ;
-  private credential = {'username' : '', 'password' : '' } ;
+  public serverPath = "http://127.0.0.1:8080" ;
+  public loginError: boolean = false;
+  public loggedIn = false ;
+  public credential = {'username' : '', 'password' : '' } ;
 
-  private emailSent: boolean = false ;
-  private usernameExists:boolean ;
-  private emailExists:boolean ;
-  private username:string;
-  private email: string ;
-  private password : string ;
-  private city:string;
-	private numeroRoad:number;
-	private Road:string;
-	private tel:number;
-  private passwordConfirmation : string ;
-  private passwordNotMaching : boolean ;
+  public emailSent: boolean = false ;
+  public usernameExists:boolean ;
+  public emailExists:boolean ;
+  public username:string;
+  public email: string ;
+  public password : string ;
+  public city:string;
+	public numeroRoad:number;
+	public Road:string;
+	public tel:number;
+  public passwordConfirmation : string ;
+  public passwordNotMaching : boolean ;
 
-  private user : User ;
+  public user : User ;
 
-  private emailNotExists:boolean = false ;
+  public emailNotExists:boolean = false ;
 
   constructor(
 	  	private userService: UserService,

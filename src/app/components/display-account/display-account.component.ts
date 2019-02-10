@@ -12,9 +12,9 @@ import {User} from '../../models/user' ;
 })
 export class DisplayAccountComponent implements OnInit {
 
-  private loginError: boolean = false;
-	private loggedIn = false ;
-  private user : User ;
+  public loginError: boolean = false;
+	public loggedIn = false ;
+  public user : User ;
 
   constructor(
 	  	private userService: UserService,

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service' ;
-import {User} from '../../models/user'; 
+import {User} from '../../models/user';
 import {Order} from '../../models/order' ;
 import {ListeCourse} from "../../models/ListeCourse" ;
-import {OrderService} from "../../services/order.service" ; 
+import {OrderService} from "../../services/order.service" ;
 import {Router} from '@angular/router' ;
 import {OrderState} from '../../models/orderState' ;
 import {MatSnackBar} from '@angular/material';
@@ -15,14 +15,14 @@ import {MatSnackBar} from '@angular/material';
 })
 export class LivreurDashboardComponent implements OnInit {
 
-	private loggedIn = false ; 
-	private user : User ; 
-	private courses : ListeCourse[] ; 
-  private order : Order ;
-  private accepted : boolean ; 
+	public loggedIn = false ;
+	public user : User ;
+	public courses : ListeCourse[] ;
+  public order : Order ;
+  public accepted : boolean ; 
 
 
-  constructor(private router : Router , 
+  constructor(private router : Router ,
     private userService: UserService,
     private orderService : OrderService,
     private snackBar: MatSnackBar) { }
@@ -32,21 +32,21 @@ export class LivreurDashboardComponent implements OnInit {
   onAccept(order : Order){
         this.orderService.acceptOrder(order.id).subscribe(
           (res:string) => {
-            console.log(res); 
+            console.log(res);
             this.accepted = true ;
             this.openSnackBar();
           },
           error => {
             console.log(error);
           }
-        );    
+        );
   }
 
   openSnackBar() {
     this.snackBar.open("vous venez d'accepter une commande", null, {
       duration: 2000,
     });
-  }    
+  }
 
   onRefuse(){
 
@@ -70,13 +70,13 @@ export class LivreurDashboardComponent implements OnInit {
 
     this.userService.getCurrentUser().subscribe(
       res => {
-        this.user = res.json(); 
+        this.user = res.json();
 
       },
       error => {
         this.loggedIn=false;
-      }      
-    );  	  	
+      }
+    );
   }
 
 }

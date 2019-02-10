@@ -13,27 +13,27 @@ import {Http} from '@angular/http';
 })
 export class LoginComponent implements OnInit {
 
-	private serverPath = "https://ausecourseback.herokuapp.com" ;
-	private loginError: boolean = false;
+	public serverPath = "https://ausecourseback.herokuapp.com" ;
+	public loginError: boolean = false;
 	public loggedIn = false ;
 	private credential = {'username' : '', 'password' : '' } ;
 
-	private emailSent: boolean = false ;
-	private usernameExists:boolean ;
-	private emailExists:boolean ;
-	private username:string;
-	private email: string ;
-	private password : string ;
-	private passwordConfirmation : string ;
-	private passwordNotMaching : boolean ;
+	public emailSent: boolean = false ;
+	public usernameExists:boolean ;
+	public emailExists:boolean ;
+	public username:string;
+	public email: string ;
+	public password : string ;
+	public passwordConfirmation : string ;
+	public passwordNotMaching : boolean ;
 
-	private emailNotExists:boolean = false ;
-	private forgetPasswordEmailSent:boolean ;
-	private recoverEmail:string ;
-	private mode : string ;
+	public emailNotExists:boolean = false ;
+	public forgetPasswordEmailSent:boolean ;
+	public recoverEmail:string ;
+	public mode : string ;
 
-	private addressLivraison : string ;
-	private telephone : number ;
+	public addressLivraison : string ;
+	public telephone : number ;
 
 
  	constructor(

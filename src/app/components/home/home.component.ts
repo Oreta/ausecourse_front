@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service' ;
-import {User} from '../../models/user'; 
-import {Router, NavigationExtras} from '@angular/router'; 
+import {User} from '../../models/user';
+import {Router, NavigationExtras} from '@angular/router';
 import {Params, ActivatedRoute} from '@angular/router';
 import {Http} from '@angular/http';
 import {CookieService} from 'angular2-cookie/core';
@@ -13,12 +13,12 @@ import {CookieService} from 'angular2-cookie/core';
 })
 export class HomeComponent implements OnInit {
 
-	private loggedIn = false ; 
-	private user : User ; 
+	public loggedIn = false ;
+	public user : User ; 
 
 
   constructor(private userService: UserService,
-    private cookieService : CookieService, 
+    private cookieService : CookieService,
   	private router:Router,
   	private http:Http,
     private route:ActivatedRoute) { }
@@ -35,12 +35,12 @@ export class HomeComponent implements OnInit {
 
     this.userService.getCurrentUser().subscribe(
       res => {
-        this.user = res.json(); 
+        this.user = res.json();
       },
       error => {
         this.loggedIn=false;
-      }      
-    );  	
+      }
+    );
   }
 
   createShoppingList(user: User) {
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
       },
       error => {
         console.log(error) ;
-      }  
+      }
     );
   }
 
@@ -58,5 +58,3 @@ export class HomeComponent implements OnInit {
 
 
 }
-
-

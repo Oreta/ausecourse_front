@@ -1,12 +1,12 @@
 import { Component, OnInit,Inject } from '@angular/core';
-import {User} from '../../models/user' ; 
+import {User} from '../../models/user' ;
 import {UserService} from '../../services/user.service' ;
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface DialogData {
   livreur: User;
-  nbStars : string; 
+  nbStars : string;
 }
 
 
@@ -17,9 +17,9 @@ export interface DialogData {
 })
 export class OrderDetailsClientComponent implements OnInit {
 
-	private livreur : User ; 
-	private listeCourse : string[] ;
-	private nbStars : string; 
+	public livreur : User ;
+	public listeCourse : string[] ;
+	public nbStars : string; 
 
   constructor(private userService : UserService,
   	private route: ActivatedRoute,
@@ -29,12 +29,12 @@ export class OrderDetailsClientComponent implements OnInit {
   getLivreurById(id : string) {
   	this.userService.getUserById(id).subscribe(
       res => {
-        this.livreur = res.json() ; 
+        this.livreur = res.json() ;
         this.livreur.stars = Math.round(this.livreur.stars);
       },
       error => {
-        console.log(error);      
-      }    		
+        console.log(error);
+      }
   	);
   }
 
@@ -46,9 +46,9 @@ export class OrderDetailsClientComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      
+
     });
-  }  
+  }
 
   ngOnInit() {
   	var livreurId = this.route.snapshot.paramMap.get('livreurId');
@@ -82,8 +82,8 @@ export class DialogOverviewExampleDialog implements OnInit{
         console.log("review created successfuly !");
       },
       error => {
-        console.log(error);      
-      }    		
+        console.log(error);
+      }
   	);
   }
 
