@@ -3,8 +3,6 @@ node_js:
   - "10.4.1"
 sudo: true
 
-addons:
-  chrome: stable
 
 branches:
   only:
@@ -14,7 +12,4 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-  - ng lint
-  - ng test
-  - ng e2e
-  - yarn build --prod --base-href /ausecourseFront #base_href should be given in travis as an environment variable
+- ng build --prod --base-href https://Oreta.github.io/testIntegration/
