@@ -17,4 +17,4 @@ deploy:
   provider: heroku
   api_key:
     secure: d00921bf-092c-4da1-afb8-8c638d9191ad
-    app: ausecourseappli
+  app: ausecourseappli
