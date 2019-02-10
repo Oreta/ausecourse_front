@@ -12,9 +12,9 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-- ng build --prod 
+- ng build --prod
 deploy:
   provider: heroku
   api_key:
     secure: 64ad335d-ff42-44ce-9c7e-67bc17c61ebe
-  app: ausecourseapplication
+  app: ausecourseappli
