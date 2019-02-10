@@ -12,7 +12,7 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-- ng build --prod --base-href https://Oreta.github.io/testIntegration/
+- ng build --prod 
 deploy:
   provider: heroku
   api_key:
