@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
 	private serverPath = "https://ausecourseback.herokuapp.com" ;
 	private loginError: boolean = false;
-	private loggedIn = false ;
+	public loggedIn = false ;
 	private credential = {'username' : '', 'password' : '' } ;
 
 	private emailSent: boolean = false ;
